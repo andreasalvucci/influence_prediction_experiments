@@ -30,20 +30,20 @@ while IFS=',' read -r line; do
 
   mkdir -p "experiments/training/$tp_name"
 
-  for i in {1..1}; do
+  for i in {1..4}; do
     echo "Experiment $i" >&2
-    for model in fit; do
+    for model in uniform frequency inverse-frequency fit; do
       echo "Model: $model" >&2
-      for d in {1..2}; do
+      for d in {1..4}; do
         echo "Degree: $d" >&2
         python train.py \
           -m "$model" \
-          -i resources/data_with_predecessor_decades.ttl \
+          -i resources/data.ttl \
           -tp "$tp" \
           $ip_args \
-          --device "cpu" \
+          --device "cuda:0" \
           -d "$d" \
-          -it 3 \
+          -it 300 \
           -o "experiments/training/$tp_name/$model.d$d.exp$i.json"
       done
     done
