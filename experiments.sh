@@ -49,7 +49,7 @@ while IFS=',' read -r line; do
     done
   done
   
-  bash report.sh "experiments/training/$tp_name" $tp
+  bash report.sh "experiments/training/$tp_name/.report" $tp
 
 done < predicati.csv
 
