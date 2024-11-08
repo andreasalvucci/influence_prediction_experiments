@@ -38,7 +38,7 @@ while IFS=',' read -r line; do
         echo "Degree: $d" >&2
         python train.py \
           -m "$model" \
-          -i resources/data.ttl \
+          -i resources/new_graph.ttl \
           -tp "$tp" \
           $ip_args \
           --device "cuda:0" \
