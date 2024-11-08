@@ -32,7 +32,7 @@ experiments
 
 ## Output degli esperimenti
 
-Ogni giro di esperimento produce un file `relationship_weights_summary.txt` che verrà inserito nella cartella `.report` dove è immediatamente possibile vedere il predicato target selezionato e i pesi trovati (in questo modo si vedono bene anche i predicati inclusi). Il report è per ogni modello, grado e numero di esperimento.
+Ogni giro di esperimento produce un file `relationship_weights_summary.txt` che verrà inserito nella cartella `report` dove è immediatamente possibile vedere il predicato target selezionato e i pesi trovati (in questo modo si vedono bene anche i predicati inclusi). Il report è per ogni modello, grado e numero di esperimento.
 
 La generazione del report è a carico di un secondo script che si chiama `report.sh`, abilitare se necessario i permessi di esecuzione con `chmod +x report.sh`.
 
