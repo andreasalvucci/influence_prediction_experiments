@@ -1,8 +1,9 @@
 #!/bin/bash
 base_folder=$1
 target_predicate=$2
-unique_report_file="$base_folder/relationship_weights_summary.txt"
-
+mkdir "$base_folder/report"
+unique_report_file="$base_folder/report/relationship_weights_summary.txt"
+touch $unique_report_file
 # Initialize the unique report file
 echo "Relationship Weights Summary" > "$unique_report_file"
 echo "=================" >> "$unique_report_file"
