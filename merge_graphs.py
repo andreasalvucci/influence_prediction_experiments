@@ -17,7 +17,17 @@ def merge_graphs(input_folder, output_file):
                 # Bind namespaces from the included graph
                 for prefix, namespace in graph.namespaces():
                     merged_graph.bind(prefix, namespace)
-
+    create_predicates_file = input("Do you want to create a predicates file? (yes/no): ").strip().lower()
+    if create_predicates_file == 'yes':
+        predicates_file = output_file.replace('.ttl', '_predicates.csv')
+        predicates = set()
+        for s, p, o in merged_graph:
+            predicates.add(str(p))
+        
+        with open(predicates_file, 'w') as f:
+            f.write(','.join(predicates))
+        
+        print(f"Predicates file saved to {predicates_file}")
     merged_graph.serialize(destination=output_file, format='turtle')
     print(f"Merged graph saved to {output_file}")
 
@@ -31,3 +41,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
+    
