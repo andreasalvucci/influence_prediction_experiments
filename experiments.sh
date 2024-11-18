@@ -32,16 +32,16 @@ while IFS=',' read -r line; do
 
   for i in {1..4}; do
     echo "Experiment $i" >&2
-    for model in uniform frequency inverse-frequency fit; do
+    for model in dnn; do #uniform frequency inverse-frequency fit
       echo "Model: $model" >&2
       for d in {1..4}; do
         echo "Degree: $d" >&2
         python train.py \
           -m "$model" \
-          -i resources/new_graph.ttl \
+          -i resources/lj_simonton_citizenship.ttl \
           -tp "$tp" \
           $ip_args \
-          --device "cuda:0" \
+          --device "cpu" \
           -d "$d" \
           -it 300 \
           -o "experiments/training/$tp_name/$model.d$d.exp$i.json"
@@ -51,6 +51,6 @@ while IFS=',' read -r line; do
   
   bash report.sh "experiments/training/$tp_name" $tp
 
-done < predicati.csv
+done < predicati_test.csv
 
 

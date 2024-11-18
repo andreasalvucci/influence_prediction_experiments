@@ -49,9 +49,11 @@ class Graph:
 
     # compute a mask for the nodes that have a target pred set
     influenced_mask = torch.where(target.sum(dim=1) > 0)[0]
+    print(influenced_mask.shape)
 
     # split target pred set into train and test
     train_idxs, test_idxs = train_test_split(influenced_mask, test_size=test_size)
+
 
     data = data.to(device)
     target = target.to(device)
